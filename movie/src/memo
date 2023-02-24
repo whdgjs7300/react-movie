@@ -1,15 +1,31 @@
 Facebook에서 주도하여 개발한 웹 어플리케이션의 UI를 효과적으로 구축하기 위해 사용하는 Javascript 기반 라이브러이다. React.js, React 둘다 혼용하며, 다른 라이브러리들과 함께 사용할 수 있어 효율적인 라이브러리라고 할 수 있다. React 자체는 framework라 부를 수 있는 기준인 라우팅, 상태관리 기본 제공을 충족하지 못하기에 '라이브러리'이지만, React의 생태계는 framework이다.
 
 
- React.js
+React.js
 1. 많은 개발회사들이 이용함(상위 웹사이트 40% 이상 사용)
 2. 리액트는 자바스크립트 기반 기술(프레임워크)
 
 
 state
 기본적으로 데이터가 저장되는 장소(값이 바뀔)
+    const [counter, setValue] = useState(0);
+    const onClick = () => setValue((prev)=>{
+        return prev + 1
+    })
+
 
 
 useEffect 
 1. 데이터를 컴포넌트 렌더됐을 때 한번만 실행하고 싶음
 2. 혹은 마지막 인자값에 [] 값을 넣어 그 값이 업데이트 됐을 때만 실행하고 싶음
+    const onChange = (e)=> {
+        setKeyword(e.target.value);
+    }
+
+    console.log('계속 렌더합니다');
+    // 데이터를 한번만 실행하게 만들어 줌
+    const iRunOnlyOnce = () =>{
+        console.log("힌번만 실행합니다");
+    }
+    
+    useEffect(iRunOnlyOnce, []);
