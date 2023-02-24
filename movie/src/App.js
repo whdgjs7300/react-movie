@@ -3,28 +3,26 @@ import './App.css';
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-  const onClick = () => setValue((prev)=>{
-    return prev + 1
-  })
+  const [toDo, setToDo] = useState("");
   const onChange = (e)=> {
-    setKeyword(e.target.value);
+    setToDo(e.target.value);
   }
-
-  console.log('계속 렌더합니다');
-  // 데이터를 한번만 실행하게 만들어 줌
-  const iRunOnlyOnce = () =>{
-    console.log("힌번만 실행합니다");
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (toDo === "") {
+      return;
+    }
+    setToDo("");
   }
-  
-  useEffect(iRunOnlyOnce, []);
+  console.log(toDo);
 
   return (
     <div className="App">
-      <input type="text" placeholder='search ...' onChange={onChange} ></input>
-      <h1>{counter}</h1>
-      <button onClick={onClick}>click me</button>
+      <form onSubmit={onSubmit}>
+      <input value={toDo} type="text" placeholder="할일을 입력하세요" onChange={onChange}/>
+        <button type="">할일을 추가함</button>
+      </form>
+      
     </div>
   );
 }
