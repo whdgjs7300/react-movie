@@ -16,7 +16,7 @@ function App() {
     setToDo("");
     setToDos(currentArray => [toDo, ...currentArray])
   }
-  console.log(toDo);
+  console.log(toDos);
 
   return (
     <div className="App">
@@ -25,7 +25,12 @@ function App() {
       <input value={toDo} type="text" placeholder="할일을 입력하세요" onChange={onChange}/>
         <button type="">할일을 추가함</button>
       </form>
-      
+      <hr/>
+      {
+        toDos.map((item)=>{
+          return <li key={item}>{item}</li>
+        })
+      }
     </div>
   );
 }
