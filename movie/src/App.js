@@ -5,6 +5,12 @@ import { useEffect, useState } from 'react';
 function App() {
   const [toDo, setToDo] = useState("");
   const [toDos, setToDos] = useState([]);
+  // useEffect 연습
+  const [loading, setLoading] = useState(true);
+  useEffect(()=>{
+    fetch("http://api.coinpaprika.com/v1/tickers")
+  }, [])
+
   const onChange = (e)=> {
     setToDo(e.target.value);
   }
@@ -27,10 +33,13 @@ function App() {
       </form>
       <hr/>
       {
-        toDos.map((item)=>{
+        toDos.map((item, i)=>{
           return <li key={item}>{item}</li>
         })
       }
+    <h1>the Coins!</h1>
+    {loading ? <strong>Loading...</strong> : null}
+
     </div>
   );
 }
