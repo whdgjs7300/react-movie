@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 const Movie = ({coverImg, title, summary, genres}) => {
     
@@ -21,5 +22,13 @@ const Movie = ({coverImg, title, summary, genres}) => {
         
     );
 }
+
+Movie.prototype = {
+    coverImg : PropTypes.string.isRequired,
+    title : PropTypes.string.isRequired,
+    summary : PropTypes.string.isRequired,
+    genres : PropTypes.arrayOf(PropTypes.string).isRequired,
+
+};
 
 export default Movie;
