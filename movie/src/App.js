@@ -3,6 +3,7 @@ import './App.css';
 import Todo from './components/todo';
 import Coin from './components/coin';
 import { useEffect, useState } from 'react';
+import Movie from './components/Movie';
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -25,26 +26,20 @@ function App() {
 
   return (
     <div className="App">
-      {
-        loading ? <h1>Loading...</h1> : <div>
-          {movies.map((movie)=>{
-            return <div key={movie.id}>
-              <img src={movie.medium_cover_image} alt=""/>
-              <h1>{movie.title}</h1>
-              <p>{movie.summary}</p>
-              <ul>
-                {movie.genres.map((g)=>{
-                  <li key={g}>{g}</li>
-                })}
-              </ul>
-            </div>
-          })}
-        </div>
-      }
-
-      
+    { loading ? (
+      <h1>Loading...</h1>
+    ) : (
+      <div>
+        {movies.map((movie)=>
+        <Movie coverImg={movie.medium_cover_image}
+        title={movie.title} 
+        summary={movie.summary} 
+        genres={movie.genres}/>
+        )}
+      </div>
+    )
+  }
     </div>
-  );
+)
 }
-
 export default App;
